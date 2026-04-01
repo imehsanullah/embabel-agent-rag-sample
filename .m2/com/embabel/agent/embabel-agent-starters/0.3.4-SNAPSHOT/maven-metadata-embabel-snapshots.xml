@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.embabel.agent</groupId>
+  <artifactId>embabel-agent-starters</artifactId>
+  <version>0.3.4-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20260217.062604</timestamp>
+      <buildNumber>109</buildNumber>
+    </snapshot>
+    <lastUpdated>20260217062944</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.3.4-20260217.062604-109</value>
+        <updated>20260217062604</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

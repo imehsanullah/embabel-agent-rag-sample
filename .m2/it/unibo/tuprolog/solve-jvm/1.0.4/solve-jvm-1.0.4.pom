@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.unibo.tuprolog</groupId>
+  <artifactId>solve-jvm</artifactId>
+  <version>1.0.4</version>
+  <name>2P-Kt, Solve Module</name>
+  <description>Resolution-agnostic API for logic solvers</description>
+  <url>https://github.com/tuProlog/2p-kt</url>
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Jason Dellaluce</name>
+      <email>jason.dellaluce@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Sofia Montebugnoli</name>
+      <email>sofia.montebugnoli2@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Enrico Siboni</name>
+      <email>enrico.siboni3@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Giovanni Ciatto</name>
+      <email>giovanni.ciatto@unibo.it</email>
+      <url>https://about.me/gciatto</url>
+      <organization>Alma Mater Studiorum - Università di Bologna</organization>
+      <organizationUrl>https://www.unibo.it/en/homepage</organizationUrl>
+    </developer>
+    <developer>
+      <name>Andrea Giordano</name>
+      <email>andrea.giordano5@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Silvia Lanzoni</name>
+      <email>silvia.lanzoni5@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Paolo Verdini</name>
+      <email>paolo.verdini@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Lorenzo Rizzato</name>
+      <email>lorenzo.rizzato@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Manuel Bonarrigo</name>
+      <email>manuel.bonarrigo@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Davide Greco</name>
+      <email>davide.greco4@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Jason Dellaluce</name>
+      <email>jason.dellaluce@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Sofia Montebugnoli</name>
+      <email>sofia.montebugnoli2@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Enrico Siboni</name>
+      <email>enrico.siboni3@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Giovanni Ciatto</name>
+      <email>giovanni.ciatto@unibo.it</email>
+      <url>https://about.me/gciatto</url>
+      <organization>Alma Mater Studiorum - Università di Bologna</organization>
+      <organizationUrl>https://www.unibo.it/en/homepage</organizationUrl>
+    </developer>
+    <developer>
+      <name>Andrea Giordano</name>
+      <email>andrea.giordano5@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Silvia Lanzoni</name>
+      <email>silvia.lanzoni5@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Paolo Verdini</name>
+      <email>paolo.verdini@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Lorenzo Rizzato</name>
+      <email>lorenzo.rizzato@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Manuel Bonarrigo</name>
+      <email>manuel.bonarrigo@studio.unibo.it</email>
+    </developer>
+    <developer>
+      <name>Davide Greco</name>
+      <email>davide.greco4@studio.unibo.it</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>git@github.com:tuProlog/2p-kt.git</connection>
+    <developerConnection>git@github.com:tuProlog/2p-kt.git</developerConnection>
+    <url>https://github.com/tuProlog/2p-kt</url>
+  </scm>
+  <issueManagement>
+    <url>https://github.com/tuProlog/2p-kt/issues</url>
+  </issueManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-jdk8</artifactId>
+      <version>1.9.23</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-common</artifactId>
+      <version>1.9.23</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-reflect</artifactId>
+      <version>1.9.23</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>it.unibo.tuprolog</groupId>
+      <artifactId>core-jvm</artifactId>
+      <version>1.0.4</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>it.unibo.tuprolog</groupId>
+      <artifactId>unify-jvm</artifactId>
+      <version>1.0.4</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>it.unibo.tuprolog</groupId>
+      <artifactId>theory-jvm</artifactId>
+      <version>1.0.4</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>1.9.23</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

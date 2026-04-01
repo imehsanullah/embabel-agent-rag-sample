@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.derive4j</groupId>
+  <artifactId>derive4j-annotation</artifactId>
+  <version>1.1.0</version>
+  <name>Derive4J - Annotations</name>
+  <description>Annotation processor and framework for deriving algebraic data types constructors, morphisms, optics and typeclasses</description>
+  <url>https://github.com/derive4j/derive4j</url>
+  <organization>
+    <name>Derive4J contributors</name>
+    <url>https://github.com/derive4j/derive4j</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>The GNU Lesser General Public License</name>
+      <url>https://github.com/derive4j/derive4j/blob/master/annotation/LICENSE.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Jean-Baptiste Giraudeau</name>
+      <email>jb@giraudeau.info</email>
+    </developer>
+  </developers>
+  <scm>
+    <url>git://github.com/derive4j/derive4j.git</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

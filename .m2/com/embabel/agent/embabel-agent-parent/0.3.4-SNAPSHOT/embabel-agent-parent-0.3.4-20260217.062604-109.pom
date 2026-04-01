@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.embabel.build</groupId>
+        <artifactId>embabel-build-parent</artifactId>
+        <version>0.1.11</version>
+    </parent>
+    <groupId>com.embabel.agent</groupId>
+    <artifactId>embabel-agent-parent</artifactId>
+    <version>0.3.4-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Embabel Agent Parent</name>
+    <description>Parent POM for Embabel Agent Modules</description>
+    <url>https://github.com/embabel/embabel-agent</url>
+
+    <properties>
+        <embabel-common.version>0.1.10</embabel-common.version>
+        <netty.version>4.1.125.Final</netty.version>
+    </properties>
+
+    <modules>
+        <module>embabel-agent-api</module>
+        <module>embabel-agent-a2a</module>
+        <module>embabel-agent-autoconfigure</module>
+        <module>embabel-agent-code</module>
+        <module>embabel-agent-common</module>
+        <module>embabel-agent-domain</module>
+        <module>embabel-agent-dependencies</module>
+        <module>embabel-agent-mcpserver</module>
+        <module>embabel-agent-observability</module>
+        <module>embabel-agent-rag</module>
+        <module>embabel-agent-shell</module>
+        <module>embabel-agent-starters</module>
+        <module>embabel-agent-test-support</module>
+        <module>embabel-agent-openai</module>
+    </modules>
+
+    <scm>
+        <url>https://github.com/embabel/embabel-agent</url>
+        <connection>scm:git:https://github.com/embabel/embabel-agent.git</connection>
+        <developerConnection>scm:git:https://github.com/embabel/embabel-agent.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <!-- Embabel Common BOM -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Embabel Agent BOM -->
+            <dependency>
+                <groupId>com.embabel.agent</groupId>
+                <artifactId>embabel-agent-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Embabel Common BOM -->
+            <dependency>
+                <groupId>com.embabel.common</groupId>
+                <artifactId>embabel-common-dependencies</artifactId>
+                <version>${embabel-common.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Embabel Common BOM -->
+            <dependency>
+                <groupId>com.embabel.common</groupId>
+                <artifactId>embabel-common-test-dependencies</artifactId>
+                <version>${embabel-common.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Netty Version Upgrades - Security Vulnerability Fixes -->
+            <!-- 
+              Force safe netty versions to fix multiple CVEs:
+              - CVE-2025-58057 (GHSA-3p8m-j85q-pgmj): DoS via zip bomb in netty-codec
+              - CVE-2025-58056 (GHSA-fghv-69vj-qj49): Request smuggling in netty-codec-http  
+              - CVE-2025-59340 (GHSA-prj3-ccx8-p6x4): MadeYouReset HTTP/2 DDoS in netty-codec-http2
+              
+              Added to common parent to override all transitive netty dependencies across all modules.
+            -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- Unit and Integration Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+        https://mvnrepository.com/artifact/org.jetbrains/annotations
+        For Experimental annotation
+        -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Consider kotlin-test-junit5 for enhanced JUnit 5 integration (test discovery, parameterized tests) -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ninja-squad</groupId>
+            <artifactId>springmockk</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- Build Embabel Agent Documentation -->
+        <profile>
+            <id>embabel-agent-docs</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>embabel-agent-docs</module>
+            </modules>
+        </profile>
+    </profiles>
+
+
+    <repositories>
+        <repository>
+            <id>embabel-releases</id>
+            <url>https://repo.embabel.com/artifactory/libs-release</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>embabel-snapshots</id>
+            <url>https://repo.embabel.com/artifactory/libs-snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+</project>

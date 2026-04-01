@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.embabel.common</groupId>
+  <artifactId>embabel-common-test-dependencies</artifactId>
+  <version>0.1.10</version>
+  <packaging>pom</packaging>
+  <name>Embabel Common Test Dependencies</name>
+  <description>Embabel Common Test Framework Dependencies</description>
+  <url>https://github.com/embabel/embabel-common</url>
+  <organization>
+    <name>Embabel Pty Ltd</name>
+    <url>https://www.embabel.com</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      <comments>Copyright 2026 the original author or authors.
+
+                Licensed under the Apache License, Version 2.0 (the "License");
+                you may not use this file except in compliance with the License.
+                You may obtain a copy of the License at
+
+                https://www.apache.org/licenses/LICENSE-2.0
+
+                Unless required by applicable law or agreed to in writing, software
+                distributed under the License is distributed on an "AS IS" BASIS,
+                WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+                implied.
+
+                See the License for the specific language governing permissions and
+                limitations under the License.</comments>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>rjohnson</id>
+      <name>Rod Johnson</name>
+      <email>rod@embabel.com</email>
+      <organization>Embabel Pty Ltd</organization>
+      <organizationUrl>https://www.embabel.com</organizationUrl>
+      <roles>
+        <role>Founder and Project Lead</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>alexheifetz</id>
+      <name>Alex Hein-Heifetz</name>
+      <email>alex@embabel.com</email>
+      <organization>Embabel Pty Ltd</organization>
+      <organizationUrl>https://www.embabel.com</organizationUrl>
+      <roles>
+        <role>lead</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>igordayen</id>
+      <name>Igor Dayen</name>
+      <email>igor@embabel.com</email>
+      <organization>Embabel Pty Ltd</organization>
+      <organizationUrl>https://www.embabel.com</organizationUrl>
+      <roles>
+        <role>lead</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>poutsma</id>
+      <name>Arjen Poutsma</name>
+      <email>arjen@embabel.com</email>
+      <organization>Embabel Pty Ltd</organization>
+      <organizationUrl>https://www.embabel.com</organizationUrl>
+      <roles>
+        <role>lead</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>jasperblues</id>
+      <name>Jasper Blues</name>
+      <email>jasper@embabel.com</email>
+      <organization>Embabel Pty Ltd</organization>
+      <organizationUrl>https://www.embabel.com</organizationUrl>
+      <roles>
+        <role>lead</role>
+      </roles>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:https://github.com/embabel/embabel-common.git</connection>
+    <developerConnection>scm:git:https://github.com/embabel/embabel-common.git</developerConnection>
+    <tag>v0.1.10</tag>
+    <url>https://github.com/embabel/embabel-common</url>
+  </scm>
+  <issueManagement>
+    <system>Github Issues</system>
+    <url>https://github.com/embabel/embabel-agent/issues</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Github Actions</system>
+    <url>https://github.com/embabel/embabel-agent/actions</url>
+  </ciManagement>
+  <properties>
+    <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
+    <maven.test.skip>true</maven.test.skip>
+    <maven-gpg-plugin.version>3.2.5</maven-gpg-plugin.version>
+    <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
+    <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.embabel.common</groupId>
+        <artifactId>embabel-common-test-neo</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2024-2026 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.embabel.build</groupId>
+    <artifactId>embabel-build-parent</artifactId>
+    <version>0.1.11</version>
+    <packaging>pom</packaging>
+    <name>Embabel Build Parent</name>
+    <description>Embabel build parent pom, managing plugins and dependencies for all Embabel projects
+    </description>
+    <modules>
+        <module>embabel-build-dependencies</module>
+        <module>embabel-dependencies-parent</module>
+    </modules>
+    <url>https://github.com/embabel</url> <!--setup github pages-->
+    <properties>
+        <!-- Java Version and Compiler -->
+        <java.version>21</java.version>
+
+        <!-- Maven Compiler -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+
+        <!--Project Encoding-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Kotlin Version and Compiler -->
+        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.compiler.apiVersion>2.1</kotlin.compiler.apiVersion>
+
+        <!-- Spring Boot -->
+        <spring-boot.version>3.5.6</spring-boot.version>
+
+        <!-- Resource Delimiter -->
+        <resource.delimiter>@</resource.delimiter>
+    
+        <!-- Embabel Build Version -->
+        <embabel-build.version>0.1.11</embabel-build.version>
+
+        <!-- Build Plugins -->
+        <maven.compiler-plugin.version>3.14.0</maven.compiler-plugin.version>
+        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
+        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
+        <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+        <license-maven-plugin.version>2.5.0</license-maven-plugin.version>
+        <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <spotless-maven-plugin.version>2.35.0</spotless-maven-plugin.version>
+        <dokka-maven-plugin.version>1.9.20</dokka-maven-plugin.version>
+
+        <!-- Sonar Properties -->
+        <sonar.organization>embabel</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.language>java</sonar.language>
+
+        <!-- Required by Maven Central -->
+        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+        <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <!-- Embabel Build BOM -->
+        <dependencies>
+            <dependency>
+                <groupId>com.embabel.build</groupId>
+                <artifactId>embabel-build-dependencies</artifactId>
+                <version>${embabel-build.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <organization>
+        <name>Embabel Pty Ltd</name>
+        <url>https://www.embabel.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>
+                Copyright 2024-2026 the Embabel Pty Ltd.
+
+                Licensed under the Apache License, Version 2.0 (the "License");
+                you may not use this file except in compliance with the License.
+                You may obtain a copy of the License at
+
+                https://www.apache.org/licenses/LICENSE-2.0
+
+                Unless required by applicable law or agreed to in writing, software
+                distributed under the License is distributed on an "AS IS" BASIS,
+                WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+                implied.
+
+                See the License for the specific language governing permissions and
+                limitations under the License.
+            </comments>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/embabel/embabel-build</url>
+        <connection>scm:git:https://github.com/embabel/embabel-build.git</connection>
+        <developerConnection>scm:git:https://github.com/embabel/embabel-build.git</developerConnection>
+        <tag>v0.1.11</tag>
+    </scm>
+    <issueManagement>
+        <system>Github Issues</system>
+        <url>https://github.com/embabel/embabel-agent/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Github Actions</system>
+        <url>https://github.com/embabel/embabel-agent/actions</url>
+    </ciManagement>
+    <developers>
+        <developer>
+            <id>rjohnson</id>
+            <name>Rod Johnson</name>
+            <email>rod@embabel.com</email>
+            <organization>Embabel Pty Ltd</organization>
+            <organizationUrl>https://www.embabel.com</organizationUrl>
+            <roles>
+                <role>Founder and Project Lead</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>alexheifetz</id>
+            <name>Alex Hein-Heifetz</name>
+            <email>alex@embabel.com</email>
+            <organization>Embabel Pty Ltd</organization>
+            <organizationUrl>https://www.embabel.com</organizationUrl>
+            <roles>
+                <role>lead</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>igordayen</id>
+            <name>Igor Dayen</name>
+            <email>igor@embabel.com</email>
+            <organization>Embabel Pty Ltd</organization>
+            <organizationUrl>https://www.embabel.com</organizationUrl>
+            <roles>
+                <role>lead</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>poutsma</id>
+            <name>Arjen Poutsma</name>
+            <email>arjen@embabel.com</email>
+            <organization>Embabel Pty Ltd</organization>
+            <organizationUrl>https://www.embabel.com</organizationUrl>
+            <roles>
+                <role>lead</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jasperblues</id>
+            <name>Jasper Blues</name>
+            <email>jasper@embabel.com</email>
+            <organization>Embabel Pty Ltd</organization>
+            <organizationUrl>https://www.embabel.com</organizationUrl>
+            <roles>
+                <role>lead</role>
+            </roles>
+        </developer>
+    </developers>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-compile</id>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>default-testCompile</id>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>testCompile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <parameters>true</parameters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jetbrains.kotlin</groupId>
+                            <artifactId>kotlin-maven-allopen</artifactId>
+                            <version>${kotlin.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <source>src/main/kotlin</source>
+                                    <source>target/generated-sources/annotations</source>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <source>src/test/kotlin</source>
+                                    <source>target/generated-test-sources/test-annotations</source>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <javaParameters>true</javaParameters> <!-- million dollar setting :) -->
+                        <jvmTarget>${maven.compiler.target}</jvmTarget>
+                        <args>
+                            <arg>-Xjsr305=strict</arg>
+                            <arg>-Xjvm-default=all</arg>
+                            <arg>-Xsuppress-warning=UNCHECKED_CAST</arg>
+                        </args>
+                        <compilerPlugins>
+                            <plugin>spring</plugin>
+                        </compilerPlugins>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <failOnFlakeCount>1</failOnFlakeCount>
+                        <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                        <excludes>
+                            <exclude>**/*IT.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>${license-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>generate-license-files</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>add-third-party</goal>
+                                <goal>aggregate-download-licenses</goal>
+                                <goal>download-licenses</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.basedir}/docs/licenses</outputDirectory>
+                                <thirdPartyFilename>THIRD-PARTY.txt</thirdPartyFilename>
+                                <licensesOutputDirectory>${project.basedir}/docs/licenses</licensesOutputDirectory>
+                                <licensesOutputFile>${project.basedir}/docs/licenses/license-list.xml
+                                </licensesOutputFile>
+                                <includeTransitiveDependencies>true</includeTransitiveDependencies>
+                                <sortByGroupIdAndArtifactId>true</sortByGroupIdAndArtifactId>
+                                <outputDirectory>${project.basedir}/docs/licenses</outputDirectory>
+                                <fileTemplate>/org/codehaus/mojo/license/third-party-file-groupByLicense.ftl
+                                </fileTemplate>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>analyze-dependencies</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>tree</goal>
+                            </goals>
+                            <configuration>
+                                <outputFile>${project.basedir}/docs/licenses/dependency-tree.txt</outputFile>
+                                <outputType>text</outputType>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>add-kotlin-and-java-sources</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/main/kotlin</source>
+                                    <source>src/main/java</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                            <configuration>
+                                <attach>true</attach>
+                                <excludeResources>false</excludeResources>
+                                <includePom>false</includePom>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${git-commit-id-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                        <generateGitPropertiesFilename>
+                            ${project.build.outputDirectory}/git.properties
+                        </generateGitPropertiesFilename>
+                        <includeOnlyProperties>
+                            <includeOnlyProperty>git.commit.id</includeOnlyProperty>
+                            <includeOnlyProperty>git.branch</includeOnlyProperty>
+                            <includeOnlyProperty>git.commit.time</includeOnlyProperty>
+                        </includeOnlyProperties>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <formats>
+                                    <format>XML</format>
+                                </formats>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin.version}</version>
+                    <inherited>true</inherited>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                            <configuration>
+                                <updatePomFile>true</updatePomFile>
+                                <flattenMode>ossrh</flattenMode>
+                                <pomElements>
+                                    <distributionManagement>remove</distributionManagement>
+                                    <dependencyManagement>remove</dependencyManagement>
+                                    <repositories>remove</repositories>
+                                    <scm>keep</scm>
+                                    <url>keep</url>
+                                    <organization>resolve</organization>
+                                </pomElements>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugin</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                    <configuration>
+                        <delimiters>
+                            <delimiter>${resource.delimiter}</delimiter>
+                        </delimiters>
+                        <useDefaultDelimiters>false</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-versions</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <fail>false</fail>
+                        <rules>
+                            <dependencyConvergence />
+                        </rules>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>${spotless-maven-plugin.version}</version>
+                    <configuration>
+                        <kotlin>
+                            <includes>
+                                <include>src/main/kotlin/**/*.kt</include>
+                                <include>src/test/kotlin/**/*.kt</include>
+                            </includes>
+                            <excludes>
+                                <exclude>src/**/generated/**/*.kt</exclude>
+                            </excludes>
+                            <trimTrailingWhitespace />
+                            <endWithNewline />
+                        </kotlin>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>apply</goal>
+                                <goal>check</goal>
+                            </goals>
+                            <phase>validate</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jetbrains.dokka</groupId>
+                    <artifactId>dokka-maven-plugin</artifactId>
+                    <version>${dokka-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>pre-site</phase>
+                            <goals>
+                                <goal>dokka</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <sourceDirectories>
+                            <dir>${project.basedir}/src/main/kotlin</dir>
+                            <dir>${project.basedir}/src/main/java</dir>
+                        </sourceDirectories>
+                        <samples>
+                            <dir>${project.basedir}/src/test/kotlin</dir>
+                        </samples>
+                        <reportUndocumented>true</reportUndocumented>
+                        <skipEmptyPackages>true</skipEmptyPackages>
+                        <jdkVersion>${java.version}</jdkVersion>
+                        <languageVersion>${kotlin.compiler.apiVersion}</languageVersion>
+                        <apiVersion>${kotlin.compiler.apiVersion}</apiVersion>
+                        <noStdlibLink>false</noStdlibLink>
+                        <noJdkLink>false</noJdkLink>
+                        <suppressObviousFunctions>true</suppressObviousFunctions>
+                        <outputDir>${project.build.directory}/dokka</outputDir>
+                        <moduleName>${project.name}</moduleName>
+                        <externalDocumentationLinks>
+                            <link>
+                                <url>https://docs.spring.io/spring-framework/docs/current/javadoc-api/</url>
+                            </link>
+                            <link>
+                                <url>https://docs.spring.io/spring-boot/docs/current/api/</url>
+                            </link>
+                        </externalDocumentationLinks>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <!-- spotless with apache license -->
+        <!-- consider maven license plugin -->
+        <profile>
+            <id>spotless-with-license</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.diffplug.spotless</groupId>
+                        <artifactId>spotless-maven-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <kotlin>
+                                <licenseHeader>
+                                    <content>
+/*
+ * Copyright 2024-2026 Embabel Pty Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+                                    </content>
+                                </licenseHeader>
+                            </kotlin>
+                            <java>
+                                <licenseHeader>
+                                    <content>
+/*
+ * Copyright 2024-2026 Embabel Pty Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+                                    </content>
+                                </licenseHeader>
+                            </java>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    
+        <!-- Skip tests profile -->
+        <profile>
+            <id>skip-tests</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+
+        <!-- Jacoco Code Coverage -->
+        <profile>
+            <id>jacoco-code-coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>flatten-pom</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>flatten-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>sonatype</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>dokka-javadoc-jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>javadocJar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <!--Passphrase consumed from MAVEN_GPG_PASSPHRASE environment variable.-->
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publishing-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>false</autoPublish>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <repository>
+                    <id>central</id>
+                    <url>https://central.sonatype.com/publishing/v2</url>
+                </repository>
+                <snapshotRepository>
+                    <id>central</id>
+                    <url>https://central.sonatype.com/publishing/v2</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    
+
+    <distributionManagement>
+        <repository>
+            <id>embabel-releases</id>
+            <url>https://repo.embabel.com/artifactory/libs-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>embabel-snapshots</id>
+            <url>https://repo.embabel.com/artifactory/libs-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>
